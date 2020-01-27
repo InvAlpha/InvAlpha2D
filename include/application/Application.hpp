@@ -74,6 +74,7 @@ namespace invalpha
                 SDL_Window* window_ptr = nullptr;
                 SDL_GLContext gl_context = nullptr;
                 bool window_should_close = false;
+                SDL_Event event;
 
                 SystemManager smanager;
             };
