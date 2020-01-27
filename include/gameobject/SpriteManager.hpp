@@ -7,7 +7,7 @@ namespace invalpha
 {
     namespace engine2d
     {
-        namespace rendering
+        namespace gameobject
         {
             class SpriteManager
             {
@@ -21,8 +21,12 @@ namespace invalpha
                     const GLuint& shader_id
                     )
                 {
-                    
+                    sprite_storage.emplace_back();
                 }
+                // Warning: no index check!!
+                Sprite* getSpriteByID(const GLuint& id) { return &sprite_storage[id]; }
+
+                std::size_t getSpriteNum() const { return sprite_storage.size(); }
             private:
                 std::vector<Sprite> sprite_storage;
             };

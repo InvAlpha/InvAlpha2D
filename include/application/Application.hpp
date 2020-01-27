@@ -29,7 +29,7 @@ namespace invalpha
                     gladLoadGL();
                     glViewport(0, 0, window_width, window_height);
 
-                    smanager.initSystems();
+                    smanager.initSystems(window_width, window_height);
                 }
                 void setAppName(const std::string& name)
                 {
