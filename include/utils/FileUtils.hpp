@@ -14,12 +14,7 @@ namespace invalpha
             class FileUtils
             {
             public:
-                static std::shared_ptr<FileUtils> getInstance()
-                {
-                    if (!instance)
-                        instance = std::make_shared<FileUtils>();
-                    return instance;
-                }
+                static std::shared_ptr<FileUtils> getInstance();
 
                 std::string loadWholeFile(const std::string &file_path)
                 {
@@ -39,6 +34,14 @@ namespace invalpha
             private:
                 static std::shared_ptr<FileUtils> instance;
             };
+
+            std::shared_ptr<FileUtils> FileUtils::instance;
+            std::shared_ptr<FileUtils> FileUtils::getInstance()
+            {
+                if (!instance)
+                    instance = std::make_shared<FileUtils>();
+                return instance;
+            }    
         }
     }
 }

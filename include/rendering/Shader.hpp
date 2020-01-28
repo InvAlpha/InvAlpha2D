@@ -5,6 +5,7 @@
 #include "..//..//dependencies/glm/glm/gtc/type_ptr.hpp"
 
 #include <string>
+#include <iostream>
 
 namespace invalpha
 {
@@ -21,6 +22,7 @@ namespace invalpha
                     program_id = glCreateProgram();
                     int success = 0;
                     char info[512];
+                    std::cout << "[Shader] Received shaders: " << vshader_id << " and " << fshader_id << std::endl;
                     glAttachShader(program_id, vshader_id);
                     glAttachShader(program_id, fshader_id);
                     glLinkProgram(program_id);
@@ -33,6 +35,8 @@ namespace invalpha
                         std::cout << "ERROR info: " << info << std::endl;
                         return;
                     }
+
+                    std::cout << "[Shader] Successfully compiled the program." << std::endl;
                 }
                 void useProgram() const
                 {
@@ -52,7 +56,7 @@ namespace invalpha
                 }
                 void setMatrix4f(const std::string& name, const glm::mat4& matrix4f)
                 {
-                    glUniformMatrix4fv(glGetUniformLocation(program_id, name.c_str()), 1, true, glm::value_ptr(matrix4f));
+                    glUniformMatrix4fv(glGetUniformLocation(program_id, name.c_str()), 1, false, glm::value_ptr(matrix4f));
                 }
                 void setVector3f(const std::string& name, const glm::vec3& vector3f)
                 {
